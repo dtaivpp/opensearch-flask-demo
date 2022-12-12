@@ -1,0 +1,9 @@
+flask
+opensearch-py
+
+# For Loading Datasets
+datasets
+kaggle
+
+pandas
+demjson
