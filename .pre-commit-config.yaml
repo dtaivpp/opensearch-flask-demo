@@ -1,5 +1,5 @@
 repos:
--   repo: git://github.com/pre-commit/pre-commit-hooks
+-   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
     -   id: trailing-whitespace
@@ -16,7 +16,7 @@ repos:
         types: [python]
         args: ["--fail-under=8", "--rcfile=pyproject.toml"]
 
--   repo: git://github.com/Yelp/detect-secrets
+-   repo: https://github.com/Yelp/detect-secrets
     rev: v1.1.0
     hooks:
     -   id: detect-secrets

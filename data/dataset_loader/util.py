@@ -9,6 +9,7 @@ from opensearchpy import OpenSearch
 logger = logging.getLogger('dataset-loader')
 _OS_CLIENT = None
 
+
 def to_ndjson(_list: list) -> list:
   """Translates list of dicts to ndjson string"""
   batch = []
@@ -63,7 +64,7 @@ def get_os_client():
 def init_logging(_logger: logging.Logger, log_level):
   """Initialize the logging"""
   formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-  log_dir='./log'
+  log_dir = './log'
 
   if not os.path.isdir(log_dir):
     try:
@@ -72,7 +73,8 @@ def init_logging(_logger: logging.Logger, log_level):
       raise PermissionError("Couldnt create %s", log_dir)
 
   # File Handler
-  file_handle = RotatingFileHandler(log_dir + "/dataset_loader.log", backupCount=15)
+  file_handle = RotatingFileHandler(
+      log_dir + "/dataset_loader.log", backupCount=15)
   file_handle.setLevel(logging.DEBUG)
   file_handle.setFormatter(formatter)
 
