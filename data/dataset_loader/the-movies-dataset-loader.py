@@ -1,8 +1,8 @@
-from os import pathpre
 import pandas as pd
 from util import to_opensearch, to_ndjson, get_os_client
 from ast import literal_eval
 import json
+from os import path
 
 
 def json_formatter(data):

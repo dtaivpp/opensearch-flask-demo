@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  fluent:
+    build:
+      context: ./network-observability/fluentd
+      args:
+        - FLUENTD_VERSION=${FLUENTD_VERSION}
+    container_name: fluentd
+    ports:
+      - 514:514/udp
+    expose:
+      -  "514/udp"
+    volumes:
+      - ./network-observability/fluentd/:/fluentd/etc
+    networks:
+      - opensearch-net
+    depends_on:
+      - opensearch
