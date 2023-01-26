@@ -1,6 +1,7 @@
 flask
 opensearch-py
 pre-commit
+python-dotenv
 
 # For Loading Datasets
 datasets
