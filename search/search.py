@@ -1,7 +1,7 @@
 import functools
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, flash, g, render_template, request, session, url_for
 )
 
 from search.opensearch import get_os_client
@@ -20,14 +20,15 @@ def home():
 @bp.route('/search', methods=['POST'])
 def search():
   error = None
-  query = request.form['search']
+  query = request.form['query']
+
 
   if len(query) == 0:
     error = "Please enter a search"
 
   if error is None:
-    # execute query
-    pass
+    data = __search(query)
+    return render_template("results/results.html", results=data)
 
   flash(error)
 
@@ -50,6 +51,23 @@ def typeahead():
     results = g.opensearch.search(template(querystring=curr_search))
     # Typeahead query
     pass
+
+
+def __search(query):
+  client = get_os_client()
+  query = {
+    "query": {
+      "multi_match": { 
+        "query": query,
+        "fields": [
+            "title",
+            "overview",
+        ]
+      }
+    }
+  }
+  results = client.search(index="movie-metadata", body=query)
+  return results["hits"]["hits"]
 
 
 def __search_as_you_type():

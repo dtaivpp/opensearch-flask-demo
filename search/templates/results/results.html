@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  {% with search_height="150px" %}
+    {% include './search/search.html' %}
+  {% endwith %}
+
+  {% for result in results %}
+    <div class="card" style="margin: 15px;">
+      <div class="card-body">
+        <a href="https://www.imdb.com/title/{{ result._source.imdb_id }}">
+          <h5 class="card-title">{{ result['_source']['title'] }}</h5>
+        </a>
+        <p class="card-text">{{ result['_source']['overview'] }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
