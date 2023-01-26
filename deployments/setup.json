@@ -1,0 +1,10 @@
+{
+    "network-observability": 
+    {
+        "file": [
+            "./docker-compose.yml", 
+            "./network-observability/docker-compose.fluent.yml"
+        ],
+        "env-file": "./network-observability/.env"
+    }
+}

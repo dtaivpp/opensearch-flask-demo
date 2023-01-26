@@ -2,7 +2,10 @@ version: '3'
 
 services:
   opensearch:
-    image: opensearchproject/opensearch:${OPENSEARCH_VERSION}
+    build:
+      context: ./OpenSearch
+      args:
+        - OPENSEARCH_VERSION=${OPENSEARCH_VERSION}
     container_name: opensearch
     environment:
       discovery.type: single-node

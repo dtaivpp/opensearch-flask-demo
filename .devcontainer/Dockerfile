@@ -6,4 +6,3 @@ RUN apt-get update && \
     apt-get -y install \
         zsh && \
     rm -rf /var/lib/apt/lists/*
-
